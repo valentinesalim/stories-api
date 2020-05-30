@@ -1,6 +1,6 @@
 # app/controllers/api/v1/stories_controller.rb
 class Api::V1::StoriesController < Api::V1::BaseController
-    before_action :set_story, only: [ :show ]
+    before_action :set_story, only: [ :show, :update, :destroy ]
     def index
       @stories = Story.all
     end
@@ -24,6 +24,12 @@ class Api::V1::StoriesController < Api::V1::BaseController
       else
         render_error
       end
+    end
+
+    def destroy
+        @story.destroy
+        head :no_content
+        # No need to create a `destroy.json.jbuilder` view
     end
   
     private
