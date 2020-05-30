@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Story.delete_all
+10.times do
+    stories = [{
+        title: Faker::TvShows::GameOfThrones.house,
+        content: Faker::TvShows::GameOfThrones.quote,
+        author: Faker::TvShows::GameOfThrones.character,
+        votes: 3
+    }]
+    puts "Created seeds"
+    Story.create(stories)
+end
